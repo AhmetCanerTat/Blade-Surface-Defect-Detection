@@ -3,3 +3,5 @@ __pycache__/
 Data_GKN
 models/
 mlruns/
+mlartifacts/
+mlflow/data 
