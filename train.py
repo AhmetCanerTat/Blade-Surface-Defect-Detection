@@ -1,4 +1,5 @@
 
+import mlflow
 import torch
 
 
@@ -44,6 +45,10 @@ def train_model_with_val(model, train_loader, val_loader, criterion, optimizer, 
         acc_history.append(epoch_acc)
         val_loss_history.append(val_epoch_loss)
         val_acc_history.append(val_epoch_acc)
+        mlflow.log_metric("train/loss", epoch_loss, step=epoch)
+        mlflow.log_metric("train/acc", epoch_acc, step=epoch)
+        mlflow.log_metric("val/loss", val_epoch_loss, step=epoch)
+        mlflow.log_metric("val/acc", val_epoch_acc, step=epoch)
         print(f"Epoch {epoch+1}/{num_epochs} - Loss: {epoch_loss:.4f} - Acc: {epoch_acc:.4f} | Val Loss: {val_epoch_loss:.4f} - Val Acc: {val_epoch_acc:.4f}")
         stop = early_stopper.step(val_epoch_loss, model)
         if stop:

@@ -1,0 +1,70 @@
+================================================================================
+Layer (type:depth-idx)                                  Param #
+================================================================================
+EfficientNet                                            --
+├─Sequential: 1-1                                       --
+│    └─Conv2dNormActivation: 2-1                        --
+│    │    └─Conv2d: 3-1                                 648
+│    │    └─BatchNorm2d: 3-2                            48
+│    │    └─SiLU: 3-3                                   --
+│    └─Sequential: 2-2                                  --
+│    │    └─FusedMBConv: 3-4                            5,232
+│    │    └─FusedMBConv: 3-5                            5,232
+│    └─Sequential: 2-3                                  --
+│    │    └─FusedMBConv: 3-6                            25,632
+│    │    └─FusedMBConv: 3-7                            92,640
+│    │    └─FusedMBConv: 3-8                            92,640
+│    │    └─FusedMBConv: 3-9                            92,640
+│    └─Sequential: 2-4                                  --
+│    │    └─FusedMBConv: 3-10                           95,744
+│    │    └─FusedMBConv: 3-11                           164,480
+│    │    └─FusedMBConv: 3-12                           164,480
+│    │    └─FusedMBConv: 3-13                           164,480
+│    └─Sequential: 2-5                                  --
+│    │    └─MBConv: 3-14                                61,200
+│    │    └─MBConv: 3-15                                171,296
+│    │    └─MBConv: 3-16                                171,296
+│    │    └─MBConv: 3-17                                171,296
+│    │    └─MBConv: 3-18                                171,296
+│    │    └─MBConv: 3-19                                171,296
+│    └─Sequential: 2-6                                  --
+│    │    └─MBConv: 3-20                                281,440
+│    │    └─MBConv: 3-21                                397,800
+│    │    └─MBConv: 3-22                                397,800
+│    │    └─MBConv: 3-23                                397,800
+│    │    └─MBConv: 3-24                                397,800
+│    │    └─MBConv: 3-25                                397,800
+│    │    └─MBConv: 3-26                                397,800
+│    │    └─MBConv: 3-27                                397,800
+│    │    └─MBConv: 3-28                                397,800
+│    └─Sequential: 2-7                                  --
+│    │    └─MBConv: 3-29                                490,152
+│    │    └─MBConv: 3-30                                1,005,120
+│    │    └─MBConv: 3-31                                1,005,120
+│    │    └─MBConv: 3-32                                1,005,120
+│    │    └─MBConv: 3-33                                1,005,120
+│    │    └─MBConv: 3-34                                1,005,120
+│    │    └─MBConv: 3-35                                1,005,120
+│    │    └─MBConv: 3-36                                1,005,120
+│    │    └─MBConv: 3-37                                1,005,120
+│    │    └─MBConv: 3-38                                1,005,120
+│    │    └─MBConv: 3-39                                1,005,120
+│    │    └─MBConv: 3-40                                1,005,120
+│    │    └─MBConv: 3-41                                1,005,120
+│    │    └─MBConv: 3-42                                1,005,120
+│    │    └─MBConv: 3-43                                1,005,120
+│    └─Conv2dNormActivation: 2-8                        --
+│    │    └─Conv2d: 3-44                                327,680
+│    │    └─BatchNorm2d: 3-45                           2,560
+│    │    └─SiLU: 3-46                                  --
+├─AdaptiveAvgPool2d: 1-2                                --
+├─Sequential: 1-3                                       --
+│    └─Linear: 2-9                                      327,936
+│    └─ReLU: 2-10                                       --
+│    └─Dropout: 2-11                                    --
+│    └─Linear: 2-12                                     771
+================================================================================
+Total params: 20,506,195
+Trainable params: 20,506,195
+Non-trainable params: 0
+================================================================================

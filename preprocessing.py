@@ -20,28 +20,10 @@ def preprocess_image_cv2(img, resize_shape=(256, 256)):
     img_resized = cv2.resize(img, resize_shape, interpolation=cv2.INTER_AREA)
     # Grayscale
     img_gray = cv2.cvtColor(img_resized, cv2.COLOR_BGR2GRAY)
-    # Blur
-    img_blur = cv2.GaussianBlur(img_gray, (3, 3), 0)
     # CLAHE
     clahe = cv2.createCLAHE(clipLimit=2, tileGridSize=(5, 5))
     img_clahe = clahe.apply(img_gray)
-    # Sobel
-    sobelx = cv2.Sobel(img_clahe, cv2.CV_64F, 1, 0, ksize=1)
-    sobely = cv2.Sobel(img_clahe, cv2.CV_64F, 0, 1, ksize=1)
-    sobel = cv2.magnitude(sobelx, sobely)
-    sobel = cv2.convertScaleAbs(sobel)
-    # Canny
-    canny = cv2.Canny(img_clahe, 20, 70)
-    # border = 20
-    # canny[:border, :] = 0
-    # canny[-border:, :] = 0
-    # canny[:, :border] = 0
-    # canny[:, -border:] = 0
-    kernel = np.ones((2, 2), np.uint8)
-    canny_morph = cv2.morphologyEx(canny, cv2.MORPH_DILATE, kernel)
-    # Merge
-    merged = cv2.merge([img_clahe, sobel, canny_morph])
-    return merged, sobel, canny_morph, img_clahe
+    return img_clahe
 
 
 
@@ -82,8 +64,8 @@ def preprocess_all_images(images_cv2):
     Returns: merged_images_all, sobel_images_all, canny_images_all, clahe_images_all
     """
     processed_results = [preprocess_image_cv2(img) for img in images_cv2]
-    merged_images, sobel_images, canny_images, clahe_images = zip(*processed_results)
-    return merged_images, sobel_images, canny_images, clahe_images
+    clahe_images = processed_results
+    return clahe_images
 
 def show_random_clahe_images_per_label(clahe_images, labels, n_per_label=2):
     """
