@@ -48,16 +48,6 @@ import random
 import matplotlib.pyplot as plt
 
 def show_grad_cam_for_random_images_per_label(model, images, labels, label_to_idx, device, n_per_label=2):
-    """
-    Show Grad-CAM results for n random images from every label.
-    Args:
-        model: Trained model.
-        images: MergedImagesDataset or list/array of images (H, W, C) or torch.Tensor.
-        labels: List of labels (same order as images) or None if using dataset.
-        label_to_idx: Dict mapping label names to class indices.
-        device: torch.device.
-        n_per_label: Number of images per label to show.
-    """
     # If images is a dataset, extract labels and indices
     if hasattr(images, '__getitem__') and hasattr(images, '__len__') and hasattr(images, 'labels'):
         # images is a dataset (e.g., MergedImagesDataset)

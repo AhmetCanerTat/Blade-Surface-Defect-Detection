@@ -39,7 +39,7 @@ def print_image_count_per_label(labels_cv2, images_cv2):
     if n_labels == 0:
         print("No labels found. Cannot display images.")
         return
-    fig, axes = plt.subplots(1, n_labels, figsize=(4*n_labels, 4))
+    _, axes = plt.subplots(1, n_labels, figsize=(4*n_labels, 4))
     if n_labels == 1:
         axes = [axes]
     for ax, (label, count) in zip(axes, label_counts.items()):
