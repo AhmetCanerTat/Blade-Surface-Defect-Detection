@@ -4,3 +4,4 @@ Data_GKN
 models/
 mlruns/
 mlartifacts/
+artifacts/
