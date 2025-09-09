@@ -45,7 +45,6 @@ def plot_confusion_matrix(all_test_labels, all_test_preds, unique_labels):
     plt.title("Test Set Confusion Matrix")
     plt.savefig("artifacts/confusion_matrix.png", dpi=150, bbox_inches='tight')
     mlflow.log_artifact("artifacts/confusion_matrix.png")
-    plt.show()
 
 def evaluate_model(model, test_loader, device, unique_labels):
     all_test_preds = []

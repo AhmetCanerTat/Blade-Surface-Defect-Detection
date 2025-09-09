@@ -6,8 +6,8 @@ import os
 import pandas as pd
 from torchinfo import summary
 
-def log_before_training(num_epochs, lr_rate, batch_size, criterion, model):
-
+def log_before_training(num_epochs, lr_rate, batch_size, criterion, model,clip_limit,tile_grid_size):
+    log_clahe_params(clip_limit,tile_grid_size)
     log_model_params(num_epochs, lr_rate, batch_size, criterion)
     log_model_summary(model)
 
@@ -123,4 +123,8 @@ def log_classification_table(report, unique_labels, artifacts_dir="artifacts"):
     
 def log_confusion_matrix():
     mlflow.log_artifact("artifacts/confusion_matrix.png")
+    
+def log_clahe_params(clip_limit, tile_grid_size):
+    mlflow.log_param("clahe_clip_limit", clip_limit)
+    mlflow.log_param("clahe_tile_grid_size", f"{tile_grid_size[0]}x{tile_grid_size[1]}")
     

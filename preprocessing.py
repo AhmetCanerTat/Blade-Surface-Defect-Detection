@@ -5,14 +5,13 @@ import cv2
 import numpy as np
 from torchvision import transforms
 
-def preprocess_image_cv2(img, resize_shape=(256, 256)):
-
+def preprocess_image_cv2(img,  clip_limit=2.0, tile_grid_size=(5,5)):
     # Resize
-    img_resized = cv2.resize(img, resize_shape, interpolation=cv2.INTER_AREA)
+    img_resized = cv2.resize(img, (256, 256), interpolation=cv2.INTER_AREA)
     # Grayscale
     img_gray = cv2.cvtColor(img_resized, cv2.COLOR_BGR2GRAY)
     # CLAHE
-    clahe = cv2.createCLAHE(clipLimit=2, tileGridSize=(5, 5))
+    clahe = cv2.createCLAHE(clip_limit, tile_grid_size)
     img_clahe = clahe.apply(img_gray)
     return img_clahe
 
@@ -46,10 +45,9 @@ def expand_channels_for_split(x_train, x_val, x_test):
 
 
 
-def preprocess_all_images(images_cv2):
-    processed_results = [preprocess_image_cv2(img) for img in images_cv2]
-    clahe_images = processed_results
-    return clahe_images
+def preprocess_all_images(images_cv2,clip_limit,tile_grid_size):
+    processed_results = [preprocess_image_cv2(img,clip_limit,tile_grid_size) for img in images_cv2]
+    return processed_results
 
 def show_random_clahe_images_per_label(clahe_images, labels, n_per_label=2):
     from collections import defaultdict
