@@ -73,7 +73,7 @@ A web-based interface was also developed for **classification** .
 
 ## Mlflow
 
-Mlflow logging to track metrics and runs easly
+Logging parameters, metrics, evaluation scores and artifacts to Mlflow to keep track of models, and compare between runs
 
 - Logging parameters such as Learning rate , batch size, epoch
 - Logging model metrics such as train and validation loss & accuracy
